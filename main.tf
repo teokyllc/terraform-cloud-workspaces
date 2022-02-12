@@ -32,18 +32,4 @@ module "network_hub" {
 }
 
 
-module "aks" {
-  source  = "app.terraform.io/ANET/aks/azure"
-  version = "1.0.0"
-  region                         = var.region
-  environment_tag                = var.environment_tag
-  aks_cluster_name               = "test"
-  resource_group                 = "pma"
-  aks_subnet_name                = module.network_hub.default_subnet_name
-  aks_vnet_name                  = module.network_hub.virtual_network_name
-  network_resource_group         = module.network_hub.hub_rg_name
-  dns_prefix                     = "test"
-  node_admin_username            = "test"
-  node_admin_ssh_pub_key         = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/Ar742uGirB+ofXQdC8/28QucVYXGC4W69A7t0WVflXnGNTox7+7QzGL31sSzpa0pnbVIZ1lHFSYj8sE7EZJgS+eilv5/zV3WF1bTTvB9u/knQPnjXj5zP9Oqr7HSDZKNxEGB3DY2Z2oYD6CYsQ8jJx5NuVy2AUqdmp40gRf7h6Jc7ZaPXp2XLaYU1yjottBDsqiH/ECE7v9YcQOxG/2W6fCOXnFHFesxs9MVlCIS/ld+O72zYoQyaH7N9i1lpnPCTHiNdJ+qezFmmOmvaj3icAdbbnnlZJAbgPKvMrmgnZPiyW9VLN/6TiSDNZi/0tUsZj6tInyZN33dhS7cYjP1zkoqGqWewwViogryFMm4bDwOI4K6S+O/+taGFYmcl18LchPlUdQxrYVgvKvAjAe5vQVCJmw7hv6jqhPF2K8LOLRW7jdY4xPK+jji6OH7t/6BMqJ0cxZk4mkFLEB0uI7dWH22q4OlPJM0UqjDvtxfXir1tGXTZaJuQL7BxVou7UE="
-  cluster_node_vm_size           = "Standard_D4s_v3"
-}
+
