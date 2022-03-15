@@ -164,3 +164,49 @@ variable "ptp_vpn_sa_lifetime" {
     default = 27000
     description = "The IPSec SA lifetime in seconds. Must be at least 300 seconds."
 }
+
+
+
+#######################
+# AKS vars
+#######################
+
+variable "aks_cluster_name" {
+  type        = string
+  description = "The name for the AKS cluster."
+}
+
+variable "aks_resource_group" {
+  type        = string
+  description = "The Azure resource group the AKS cluster belongs to."
+}
+
+variable "aks_vnet_name" {
+  type        = string
+  description = "The name of the vnet to deploy AKS onto."
+}
+
+variable "aks_subnet_name" {
+  type        = string
+  description = "The name of the subnet to deploy AKS onto."
+}
+
+variable "dns_prefix" {
+  type        = string
+  description = "DNS prefix specified when creating the managed cluster."
+}
+
+variable "node_admin_username" {
+  type        = string
+  description = "The SSH username for AKS node access."
+}
+
+variable "node_admin_ssh_pub_key" {
+  type        = string
+  description = "The public key for the SSH user."
+}
+
+variable "cluster_node_vm_size" {
+  type        = string
+  description = "The size of the VM's being used for nodes."
+}

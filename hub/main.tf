@@ -31,5 +31,17 @@ module "network_hub" {
     ptp_vpn_sa_lifetime           = var.ptp_vpn_sa_lifetime
 }
 
-
-
+module "aks" {
+    source  = "app.terraform.io/ANET/aks/azure"
+    version = "1.0.2"
+    region                         = var.region
+    environment_tag                = var.environment_tag
+    aks_cluster_name               = var.aks_cluster_name
+    resource_group                 = var.resource_group
+    aks_subnet_name                = var.aks_subnet_name
+    aks_vnet_name                  = var.aks_vnet_name
+    dns_prefix                     = var.dns_prefix
+    node_admin_username            = var.node_admin_username
+    node_admin_ssh_pub_key         = var.node_admin_ssh_pub_key
+    cluster_node_vm_size           = var.cluster_node_vm_size
+}
