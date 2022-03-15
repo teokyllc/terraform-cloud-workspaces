@@ -6,7 +6,6 @@ enable_subnet_nsg = false
 enable_subnet_firewall = false
 hub_route_table_name = "Hub-Route-Table"
 disable_bgp_route_propagation = false
-environment_tag = "MGMT"
 vnet_cidr = "10.0.0.0/16"
 dns_servers = null
 default_subnet_cidr = "10.0.0.0/24"
