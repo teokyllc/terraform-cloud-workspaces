@@ -1,5 +1,6 @@
 locals {
   region = "eastus"
+  environment_tag = "MGMT"
 }
 
 resource "azurerm_resource_group" "network_rg" {
@@ -20,8 +21,8 @@ resource "azurerm_resource_group" "aks_rg" {
 module "network_hub" {
     source                        = "app.terraform.io/ANET/network-hub/azure"
     version                       = "1.0.2"
-    environment_tag               = var.environment_tag
-    region                        = var.region
+    environment_tag               = local.environment_tag
+    region                        = local.region
     hub_rg_name                   = azurerm_resource_group.network_rg.name
     hub_vnet_name                 = var.hub_vnet_name
     hub_route_table_name          = var.hub_route_table_name

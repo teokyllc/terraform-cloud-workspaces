@@ -7,11 +7,6 @@ variable "region" {
     description = "The Azure region the resources will be deployed to."
 }
 
-variable "hub_rg_name" {
-    type = string
-    description = "The name for the network hub resource group."
-}
-
 variable "hub_vnet_name" {
     type = string
     description = "The name for the network hub vNet."
@@ -45,11 +40,6 @@ variable "hub_route_table_name" {
 variable "disable_bgp_route_propagation" {
     type = bool
     description = "If true, disables BGP route propagation."
-}
-
-variable "environment_tag" {
-    type = string
-    description = "The name for the environment tag."
 }
 
 variable "vnet_cidr" {
