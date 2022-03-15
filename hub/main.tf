@@ -37,7 +37,8 @@ module "aks" {
     region                         = var.region
     environment_tag                = var.environment_tag
     aks_cluster_name               = var.aks_cluster_name
-    resource_group                 = var.resource_group
+    resource_group                 = var.aks_resource_group
+    network_resource_group         = module.network_hub.hub_rg_name
     aks_subnet_name                = module.network_hub.default_subnet_name
     aks_vnet_name                  = module.network_hub.virtual_network_name
     dns_prefix                     = var.dns_prefix
