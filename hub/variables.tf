@@ -181,16 +181,6 @@ variable "aks_resource_group" {
   description = "The Azure resource group the AKS cluster belongs to."
 }
 
-variable "aks_vnet_name" {
-  type        = string
-  description = "The name of the vnet to deploy AKS onto."
-}
-
-variable "aks_subnet_name" {
-  type        = string
-  description = "The name of the subnet to deploy AKS onto."
-}
-
 variable "dns_prefix" {
   type        = string
   description = "DNS prefix specified when creating the managed cluster."

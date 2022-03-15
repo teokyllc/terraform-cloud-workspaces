@@ -38,8 +38,8 @@ module "aks" {
     environment_tag                = var.environment_tag
     aks_cluster_name               = var.aks_cluster_name
     resource_group                 = var.resource_group
-    aks_subnet_name                = var.aks_subnet_name
-    aks_vnet_name                  = var.aks_vnet_name
+    aks_subnet_name                = module.network_hub.default_subnet_name
+    aks_vnet_name                  = module.network_hub.virtual_network_name
     dns_prefix                     = var.dns_prefix
     node_admin_username            = var.node_admin_username
     node_admin_ssh_pub_key         = var.node_admin_ssh_pub_key
