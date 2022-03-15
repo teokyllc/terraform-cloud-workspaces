@@ -1,5 +1,4 @@
 region = "eastus"
-hub_rg_name = "Hub-RG"
 hub_vnet_name = "Hub-vNet"
 default_subnet_name = "default"
 enable_p2p_vpn = false

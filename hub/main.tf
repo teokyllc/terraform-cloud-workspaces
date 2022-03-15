@@ -1,9 +1,28 @@
+locals {
+  region = "eastus"
+}
+
+resource "azurerm_resource_group" "network_rg" {
+  name     = "Hub-RG"
+  location = local.region
+}
+
+resource "azurerm_resource_group" "acr_rg" {
+  name     = "Hub-ACR-RG"
+  location = local.region
+}
+
+resource "azurerm_resource_group" "aks_rg" {
+  name     = "Hub-AKS-RG"
+  location = local.region
+}
+
 module "network_hub" {
     source                        = "app.terraform.io/ANET/network-hub/azure"
-    version                       = "1.0.1"
+    version                       = "1.0.2"
     environment_tag               = var.environment_tag
     region                        = var.region
-    hub_rg_name                   = var.hub_rg_name
+    hub_rg_name                   = azurerm_resource_group.network_rg.name
     hub_vnet_name                 = var.hub_vnet_name
     hub_route_table_name          = var.hub_route_table_name
     default_subnet_name           = var.default_subnet_name
@@ -31,18 +50,29 @@ module "network_hub" {
     ptp_vpn_sa_lifetime           = var.ptp_vpn_sa_lifetime
 }
 
-module "aks" {
-    source  = "app.terraform.io/ANET/aks/azure"
-    version = "1.0.2"
-    region                         = var.region
-    environment_tag                = var.environment_tag
-    aks_cluster_name               = var.aks_cluster_name
-    aks_resource_group             = var.aks_resource_group
-    network_resource_group         = module.network_hub.hub_rg_name
-    aks_subnet_name                = module.network_hub.default_subnet_name
-    aks_vnet_name                  = module.network_hub.virtual_network_name
-    dns_prefix                     = var.dns_prefix
-    node_admin_username            = var.node_admin_username
-    node_admin_ssh_pub_key         = var.node_admin_ssh_pub_key
-    cluster_node_vm_size           = var.cluster_node_vm_size
-}
+# module "container_registry" {
+#   source                        = "github.com/teokyllc/terraform-azure-container-registry"
+#   rg_name                       = azurerm_resource_group.shared_services_rg.name
+#   cr_name                       = "SharedServicesCR"
+#   region                        = local.region
+#   sku                           = "Standard"
+#   admin_account_enabled         = true
+#   public_network_access_enabled = false
+# }
+
+# module "aks" {
+#     source                 = "app.terraform.io/ANET/aks/azure"
+#     version                = "1.0.2"
+#     region                 = var.region
+#     environment_tag        = var.environment_tag
+#     aks_cluster_name       = var.aks_cluster_name
+#     aks_resource_group     = var.aks_resource_group
+#     network_resource_group = module.network_hub.hub_rg_name
+#     aks_subnet_name        = module.network_hub.default_subnet_name
+#     aks_vnet_name          = module.network_hub.virtual_network_name
+#     dns_prefix             = var.dns_prefix
+#     node_admin_username    = var.node_admin_username
+#     node_admin_ssh_pub_key = var.node_admin_ssh_pub_key
+#     cluster_node_vm_size   = var.cluster_node_vm_size
+# }
+
