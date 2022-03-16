@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "aks_rg" {
 
 module "network_hub" {
     source                        = "app.terraform.io/ANET/network-hub/azure"
-    version                       = "1.0.3"
+    version                       = "1.0.4"
     environment_tag               = local.environment_tag
     region                        = local.region
     hub_rg_name                   = azurerm_resource_group.network_rg.name
