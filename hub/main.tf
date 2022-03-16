@@ -62,19 +62,19 @@ module "container_registry" {
     public_network_access_enabled          = var.public_network_access_enabled
 }
 
-# module "aks" {
-#     source                 = "app.terraform.io/ANET/aks/azure"
-#     version                = "1.0.2"
-#     region                 = var.region
-#     environment_tag        = var.environment_tag
-#     aks_cluster_name       = var.aks_cluster_name
-#     aks_resource_group     = var.aks_resource_group
-#     network_resource_group = module.network_hub.hub_rg_name
-#     aks_subnet_name        = module.network_hub.default_subnet_name
-#     aks_vnet_name          = module.network_hub.virtual_network_name
-#     dns_prefix             = var.dns_prefix
-#     node_admin_username    = var.node_admin_username
-#     node_admin_ssh_pub_key = var.node_admin_ssh_pub_key
-#     cluster_node_vm_size   = var.cluster_node_vm_size
-# }
+module "aks" {
+    source                 = "app.terraform.io/ANET/aks/azure"
+    version                = "1.0.2"
+    region                 = var.region
+    environment_tag        = var.environment_tag
+    aks_cluster_name       = var.aks_cluster_name
+    aks_resource_group     = var.aks_resource_group
+    network_resource_group = module.network_hub.hub_rg_name
+    aks_subnet_name        = module.network_hub.default_subnet_name
+    aks_vnet_name          = module.network_hub.virtual_network_name
+    dns_prefix             = var.dns_prefix
+    node_admin_username    = var.node_admin_username
+    node_admin_ssh_pub_key = var.node_admin_ssh_pub_key
+    cluster_node_vm_size   = var.cluster_node_vm_size
+}
 
