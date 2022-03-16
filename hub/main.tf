@@ -65,11 +65,11 @@ module "container_registry" {
 module "aks" {
     source                 = "app.terraform.io/ANET/aks/azure"
     version                = "1.0.2"
-    region                 = var.region
-    environment_tag        = var.environment_tag
+    region                 = local.region
+    environment_tag        = local.environment_tag
     aks_cluster_name       = var.aks_cluster_name
-    aks_resource_group     = var.aks_resource_group
-    network_resource_group = module.network_hub.hub_rg_name
+    aks_resource_group     = azurerm_resource_group.aks_rg.name
+    network_resource_group = azurerm_resource_group.network_rg.name
     aks_subnet_name        = module.network_hub.default_subnet_name
     aks_vnet_name          = module.network_hub.virtual_network_name
     dns_prefix             = var.dns_prefix
