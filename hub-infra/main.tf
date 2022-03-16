@@ -63,6 +63,7 @@ module "container_registry" {
 }
 
 module "aks" {
+    depends_on             = [module.network_hub]
     source                 = "app.terraform.io/ANET/aks/azure"
     version                = "1.0.6"
     region                 = local.region
