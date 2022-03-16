@@ -51,15 +51,16 @@ module "network_hub" {
     ptp_vpn_sa_lifetime           = var.ptp_vpn_sa_lifetime
 }
 
-# module "container_registry" {
-#   source                        = "github.com/teokyllc/terraform-azure-container-registry"
-#   rg_name                       = azurerm_resource_group.shared_services_rg.name
-#   cr_name                       = "SharedServicesCR"
-#   region                        = local.region
-#   sku                           = "Standard"
-#   admin_account_enabled         = true
-#   public_network_access_enabled = false
-# }
+module "container_registry" {
+    source                                 = "app.terraform.io/ANET/container-registry/azure"
+    version                                = "1.0.1"
+    container_registry_resource_group_name = azurerm_resource_group.acr_rg.name
+    container_registry_name                = var.container_registry_name
+    region                                 = local.region
+    sku                                    = var.sku
+    admin_account_enabled                  = var.admin_account_enabled
+    public_network_access_enabled          = var.public_network_access_enabled
+}
 
 # module "aks" {
 #     source                 = "app.terraform.io/ANET/aks/azure"

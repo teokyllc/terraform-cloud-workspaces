@@ -190,3 +190,29 @@ variable "cluster_node_vm_size" {
   type        = string
   description = "The size of the VM's being used for nodes."
 }
+
+
+
+#######################
+# ACR vars
+#######################
+
+variable "container_registry_name" {
+    type = string
+    description = "The name for the container registry."
+}
+
+variable "sku" {
+    type = string
+    description = "The container registry sku."
+}
+
+variable "admin_account_enabled" {
+    type = string
+    description = "Determines if an admin account will be enabled."
+}
+
+variable "public_network_access_enabled" {
+    type = string
+    description = "Determines if public access will be enabled."
+}
