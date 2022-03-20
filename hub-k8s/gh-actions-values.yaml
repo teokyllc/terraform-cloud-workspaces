@@ -1,0 +1,71 @@
+labels: {}
+replicaCount: 1
+syncPeriod: 10m
+enableLeaderElection: true
+
+authSecret:
+  enabled: true
+  create: false
+  name: "controller-manager"
+  ### GitHub Apps Configuration
+  ## NOTE: IDs MUST be strings, use quotes
+  #github_app_id: ""
+  #github_app_installation_id: ""
+  #github_app_private_key: |
+  ### GitHub PAT Configuration
+  #github_token: ""
+
+dockerRegistryMirror: ""
+image:
+  repository: "summerwind/actions-runner-controller"
+  actionsRunnerRepositoryAndTag: "summerwind/actions-runner:latest"
+  dindSidecarRepositoryAndTag: "docker:dind"
+  pullPolicy: IfNotPresent
+  actionsRunnerImagePullSecrets: []
+
+certManagerEnabled: true
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+
+podSecurityContext:
+  {}
+  # fsGroup: 2000
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 443
+  annotations : {}
+
+metrics:
+  serviceMonitor: false
+  port: 8443
+  proxy:
+    enabled: true
+    image:
+      repository: quay.io/brancz/kube-rbac-proxy
+      tag: v0.11.0
+
+podDisruptionBudget:
+  enabled: false
+  # minAvailable: 1
+  # maxUnavailable: 3
+
+scope:
+  singleNamespace: false
+  watchNamespace: ""
+
+githubWebhookServer:
+  enabled: false
