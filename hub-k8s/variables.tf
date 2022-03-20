@@ -26,7 +26,7 @@ variable "actions_runner_namespace" {
     description = "The namespace Actions Runners will be deployed to."
 }
 
-variable "actions_runner_values_filename" {
+variable "gh_actiones_values_filename" {
     type = string
     description = "The filename for values.yaml."
 }
