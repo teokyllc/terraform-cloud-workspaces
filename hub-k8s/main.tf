@@ -8,7 +8,7 @@ module "cert-manager" {
 
 module "github-runners" {
   source                             = "app.terraform.io/ANET/github-runners/kubernetes"
-  version                            = "1.0.4"
+  version                            = "1.0.5"
   actions_runner_namespace           = var.actions_runner_namespace
   gh_actiones_values_filename        = var.gh_actiones_values_filename
   docker_enabled                     = var.docker_enabled
@@ -18,5 +18,6 @@ module "github-runners" {
   container_image                    = var.container_image
   container_tag                      = var.container_tag
   github_org                         = var.github_org
+  enable_github_pat_auth             = var.enable_github_pat_auth
 }
 
