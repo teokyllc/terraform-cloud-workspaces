@@ -1,9 +1,9 @@
 module "cert-manager" {
-  source                 = "app.terraform.io/ANET/cert-manager/kubernetes"
-  version                = "1.0.4"
-  cert_manager_namespace = var.cert_manager_namespace
-  values_filename        = var.cert_manager_values_filename
-  enable_vault_issuer    = var.enable_vault_issuer
+  source                       = "app.terraform.io/ANET/cert-manager/kubernetes"
+  version                      = "1.0.5"
+  cert_manager_namespace       = var.cert_manager_namespace
+  cert_manager_values_filename = var.cert_manager_values_filename
+  enable_vault_issuer          = var.enable_vault_issuer
 }
 
 module "github-runners" {
