@@ -8,7 +8,7 @@ module "cert-manager" {
 
 module "github-runners" {
   source                             = "app.terraform.io/ANET/github-runners/kubernetes"
-  version                            = "1.0.1"
+  version                            = "1.0.2"
   actions_runner_namespace           = var.actions_runner_namespace
   gh_actiones_values_filename        = var.gh_actiones_values_filename
   docker_enabled                     = var.docker_enabled
