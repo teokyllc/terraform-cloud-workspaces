@@ -13,3 +13,4 @@ container_registry                 = "TEOKYLLCSharedServices"
 container_image                    = "actions-runner"
 container_tag                      = "v2.288.1-ubuntu-20.04"
 github_org                         = "teokyllc"
+enable_github_pat_auth             = true
