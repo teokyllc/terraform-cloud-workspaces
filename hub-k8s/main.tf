@@ -1,6 +1,6 @@
 module "cert-manager" {
   source                       = "app.terraform.io/ANET/cert-manager/kubernetes"
-  version                      = "1.0.6"
+  version                      = "1.0.7"
   cert_manager_namespace       = var.cert_manager_namespace
   cert_manager_values_filename = var.cert_manager_values_filename
   enable_vault_issuer          = var.enable_vault_issuer
