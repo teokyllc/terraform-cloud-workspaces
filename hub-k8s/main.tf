@@ -7,6 +7,7 @@ module "cert-manager" {
 }
 
 module "github-runners" {
+  depends_on                         = [module.cert-manager]
   source                             = "app.terraform.io/ANET/github-runners/kubernetes"
   version                            = "1.0.8"
   actions_runner_namespace           = var.actions_runner_namespace
