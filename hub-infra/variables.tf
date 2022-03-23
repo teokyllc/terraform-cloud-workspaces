@@ -192,7 +192,7 @@ variable "cluster_node_vm_size" {
 }
 
 variable "node_count" {
-  type        = string
+  type        = number
   description = "The number of AKS nodes."
 }
 
