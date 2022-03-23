@@ -77,5 +77,6 @@ module "aks" {
     node_admin_username    = var.node_admin_username
     node_admin_ssh_pub_key = var.node_admin_ssh_pub_key
     cluster_node_vm_size   = var.cluster_node_vm_size
+    node_count             = var.node_count
 }
 
