@@ -1,6 +1,6 @@
 module "vpc" {
   source                 = "app.terraform.io/ANET/vpc/aws"
-  version                = "1.0.7"
+  version                = "1.0.8"
   vpc_name               = "KentuckyMyco"
   cidr_block             = "10.0.0.0/16"
   instance_tenancy       = "default"
