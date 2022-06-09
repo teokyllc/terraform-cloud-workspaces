@@ -1,6 +1,6 @@
 module "vpc" {
   source                 = "app.terraform.io/ANET/vpc/aws"
-  version                = "1.0.6"
+  version                = "1.0.7"
   vpc_name               = "KentuckyMyco"
   cidr_block             = "10.0.0.0/16"
   instance_tenancy       = "default"
@@ -25,22 +25,6 @@ module "vpc" {
           az   = "c"
       }
   ]
-  private_subnets         = [
-      {
-          name = "Private-A",
-          cidr = "10.0.3.0/24"
-          az   = "a"
-      },
-      {
-          name = "Private-B",
-          cidr = "10.0.4.0/24"
-          az   = "b"
-      },
-      {
-          name = "Private-C",
-          cidr = "10.0.5.0/24"
-          az   = "c"
-      }
-  ]
+  private_subnets         = []
 }
 
